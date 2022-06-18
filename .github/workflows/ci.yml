@@ -40,7 +40,7 @@ jobs:
         name: app-${{ matrix.os }}
         path: dist/app${{ matrix.ext }}
 
-     - name: Create Release
+    - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
