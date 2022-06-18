@@ -102,8 +102,7 @@ jobs:
           --onefile
           --standalone
           --python-flag=no_site
-          ${{ matrix.nuitka-arguments }}
-          pybin
+          pybin.py
       - name: List package files
         shell: bash
         run: ls -lSh pybin.dist
