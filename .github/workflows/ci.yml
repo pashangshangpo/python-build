@@ -9,9 +9,11 @@ jobs:
         include:
           - os: macos-latest
             name: mac
+            ext: ''
             pyinstall_args: --onefile
           - os: windows-latest
             name: windows
+            ext: .exe
             pyinstall_args: --onefile
 
     runs-on: ${{ matrix.os }}
@@ -30,18 +32,19 @@ jobs:
 
     - name: Build
       shell: bash
-      run: pyinstaller ${{ matrix.pyinstall_args }} pybin.py
+      run: pyinstaller ${{ matrix.pyinstall_args }} app.py
 
-    - name: Mac Upload
-      if: matrix.name == 'mac'
+    - name: Upload
       uses: actions/upload-artifact@v2
       with:
-        name: pybin-${{ matrix.os }}
-        path: dist/pybin
-    
-    - name: Windows Upload
-      if: matrix.name == 'windows'
-      uses: actions/upload-artifact@v2
+        name: app-${{ matrix.os }}
+        path: dist/app${{ matrix.ext }}
+
+    - name: Upload binary
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
       with:
-        name: pybin-${{ matrix.os }}
-        path: dist/pybin.exe
+        upload_url: ${{ steps.update_release.outputs.upload_url }}
+        asset_path: dist/app${{ matrix.ext }}
+        asset_name: app_${{ runner.os }}${{ matrix.ext }}
