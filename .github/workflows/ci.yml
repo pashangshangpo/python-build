@@ -44,12 +44,12 @@ jobs:
       id: update_release
       uses: tubone24/update_release@v1.0
       env:
-        GITHUB_TOKEN: ${{ github.token }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Upload binary
       uses: actions/upload-release-asset@v1
       env:
-        GITHUB_TOKEN: ${{ github.token }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.update_release.outputs.upload_url }}
         asset_path: dist/app${{ matrix.ext }}
