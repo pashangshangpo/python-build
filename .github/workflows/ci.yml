@@ -33,5 +33,5 @@ jobs:
     - name: Upload
       uses: actions/upload-artifact@v2
       with:
-        name: EPLaunch-${{ matrix.os }}
+        name: pybin-${{ matrix.os }}
         path: dist/pybin
