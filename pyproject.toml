@@ -2,6 +2,7 @@
 name = "pybin"
 version = "0.1.0"
 description = ""
+authors = ["pashangshangpo"]
 license = "GPL-3.0-or-later"
 
 [tool.poetry.dependencies]
