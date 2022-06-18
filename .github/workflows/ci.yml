@@ -9,7 +9,6 @@ jobs:
         include:
           - os: macos-10.15
             pyinstall_args: --onefile
-            wxpython: wxpython
           - os: windows-2019
             pyinstall_args: --onefile
 
