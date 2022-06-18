@@ -7,9 +7,11 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: macos-10.15
+          - os: macos-latest
+            name: mac
             pyinstall_args: --onefile
-          - os: windows-2019
+          - os: windows-latest
+            name: windows
             pyinstall_args: --onefile
 
     runs-on: ${{ matrix.os }}
@@ -30,8 +32,16 @@ jobs:
       shell: bash
       run: pyinstaller ${{ matrix.pyinstall_args }} pybin.py
 
-    - name: Upload
+    - name: Mac Upload
+      if: matrix.name == 'mac'
       uses: actions/upload-artifact@v2
       with:
         name: pybin-${{ matrix.os }}
         path: dist/pybin
+    
+    - name: Windows Upload
+      if: matrix.name == 'windows'
+      uses: actions/upload-artifact@v2
+      with:
+        name: pybin-${{ matrix.os }}
+        path: dist/pybin.exe
