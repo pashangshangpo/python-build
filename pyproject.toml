@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "pybin"
+version = "0.1.0"
+description = ""
+license = "GPL-3.0-or-later"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.11"
+
+[tool.poetry.dev-dependencies]
+Nuitka = [
+  {version = "=0.6.17", markers = "platform_system == 'Windows'"},
+  {version = "^0.6.19", markers = "platform_system != 'Windows'"}
+]
+
+pydub = ">=0.25.1"
