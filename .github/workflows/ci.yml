@@ -92,9 +92,6 @@ jobs:
         run: >-
           ln -s /usr/local/opt/openssl@1.1/lib/libcrypto.1.1.dylib /usr/local/lib/libcrypto.dylib &&
           ln -s /usr/local/opt/openssl@1.1/lib/libssl.1.1.dylib /usr/local/lib/libssl.dylib
-      - name: Use version from Git
-        shell: bash
-        run: ./update_version.sh
 
       - name: Create package
         env:
