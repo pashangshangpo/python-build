@@ -39,24 +39,3 @@ jobs:
       with:
         name: app-${{ matrix.os }}
         path: dist/app${{ matrix.ext }}
-
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: v__VERSION__
-        release_name: "v__VERSION__"
-        draft: false
-        prerelease: false
-
-    - name: Upload binary
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: dist/app${{ matrix.ext }}
-        asset_name: app_${{ runner.os }}${{ matrix.ext }}
-        asset_content_type: application/octet-stream
