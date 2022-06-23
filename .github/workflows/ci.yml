@@ -30,10 +30,10 @@ jobs:
 
     - name: Build
       shell: bash
-      run: pyinstaller ${{ matrix.pyinstall_args }} App.py
+      run: pyinstaller ${{ matrix.pyinstall_args }} app.py
 
     - name: Upload
       uses: actions/upload-artifact@v2
       with:
-        name: App-${{ matrix.name }}
-        path: dist/App${{ matrix.ext }}
+        name: app-${{ matrix.name }}
+        path: dist/app${{ matrix.ext }}
