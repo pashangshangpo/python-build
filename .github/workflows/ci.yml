@@ -21,21 +21,19 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Set up Python 3.8
+    - name: Set up Python Version
       uses: actions/setup-python@v2
       with:
         python-version: 3.8
-
-    - name: Install Pip Dependencies
-      shell: bash
-      run: pip install -r requirements.txt
+    
+    
 
     - name: Build
       shell: bash
-      run: pyinstaller ${{ matrix.pyinstall_args }} app.py
+      run: pyinstaller ${{ matrix.pyinstall_args }} App.py
 
     - name: Upload
       uses: actions/upload-artifact@v2
       with:
-        name: app-${{ matrix.os }}
-        path: dist/app${{ matrix.ext }}
+        name: App-${{ matrix.name }}
+        path: dist/App${{ matrix.ext }}
