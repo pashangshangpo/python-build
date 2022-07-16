@@ -10,11 +10,11 @@ jobs:
           - os: macos-latest
             name: mac
             ext: ''
-            pyinstall_args: --onefile
+            pyinstall_args: --onefile --add-data "ai.ttf:./ai.ttf"
           - os: windows-latest
             name: windows
             ext: .exe
-            pyinstall_args: --onefile
+            pyinstall_args: --onefile --add-data "ai.ttf:./ai.ttf"
 
     runs-on: ${{ matrix.os }}
 
@@ -28,7 +28,7 @@ jobs:
     
     - name: Install Pip Dependencies
       shell: bash
-      run: pip install pyinstaller
+      run: pip install -r requirements.txt
 
     - name: Build
       shell: bash
