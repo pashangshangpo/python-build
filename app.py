@@ -1,7 +1,7 @@
 from PIL import Image, ImageFont
 from handright import Template, handwrite
 
-print('hello')
+print('hello123')
 
 text = "分享GitHub上有趣入门级开源项目"
 template = Template(
